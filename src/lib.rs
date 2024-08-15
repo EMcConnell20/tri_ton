@@ -11,13 +11,11 @@
 //!  common task. Although the `?` operator can be useful, it
 //!  forwards exceptions rather than handling them.
 //!
-//! ```ignore
-//! // Try Formats
-//! tri!(a => b $$ c);
-//! tri!(a => b(A) $$ c);
-//! tri!(a => b[B] $$ c);
-//! tri!(a => [R] $$ c);
-//! ```
+//!     // Try Formats
+//!     tri!(a => b $$ c);
+//!     tri!(a => b(A) $$ c);
+//!     tri!(a => b[B] $$ c);
+//!     tri!(a => [R] $$ c);
 //!
 //!  * `$$` - A Tri Operator
 //!  * `a` - The Expression to Evaluate
