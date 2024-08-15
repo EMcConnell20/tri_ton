@@ -1,0 +1,8 @@
+[package]
+name = "tri_ton"
+authors = ["u/nondescript_potato"]
+description = "A Macro for Handling Exceptions"
+readme = "README.md"
+keywords = ["macro", "utility", "enum"]
+version = "0.0.1"
+edition = "2021"
