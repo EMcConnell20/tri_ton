@@ -4,34 +4,18 @@
     unused_imports,
     unused_mut,
 )]
-//! # tri_ton - Try Into
+//! This crate offers the `tri!` macro, a tool for concisely writing
+//! tedious **try-except** statements.
 //!
-//! ___
-//! <br>
-//!
-//! This crate offers `tri!`, a macro for quickly and concisely
-//! writing **try-except** statements.
-//!
-//! Having to unpack options and results is a fairly common task.
-//! Although the `?` operator can be useful, it only forwards
-//! issues.
-//!
-//! `tri!` has five operators for handling issues, and they  can
-//! be used for more than just **option** and **result** values.
-//!
-//! ___
-//! <br>
+//! Having to unwrap an option or result from a function is a
+//! common task. Although the `?` operator can be useful, it
+//! forwards exceptions rather than handling them.
 //!
 //! ## Tri Expression Formats
 //!
-//!     use tri_ton::tri;
-//!
 //!     tri!(a => b $$ c);
-//!
 //!     tri!(a => b(A) $$ c);
-//!
 //!     tri!(a => b[B] $$ c);
-//!
 //!     tri!(a => [R] $$ c);
 //!
 //! Parts of the Expression:
@@ -71,17 +55,22 @@
 //! **R** is for matching non-enum values to patterns. `..foo`,
 //! `_`, and `(FOO, 0..=bar)` are all accepted patterns.
 //!
-//! ___
-//! <br>
+//! ## Tri Expressions
+//!
+//! `tri!` has five operators for handling exceptions.
+//! - Tri-Fall
+//! - Tri-Fail
+//! - Tri-Return
+//! - Tri-Until
+//! - Tri-While
 //!
 //! ### Tri-Fall
 //!
 //! The `<>` operator can be used to provide a fallback value
 //! if an expression doesn't match the given term.
 //!
-//! ```
+//! ```rust
 //! # use tri_ton::tri;
-//!
 //! # fn main() {
 //! # let foo = Some(true);
 //! // If foo isn't "some", bar is set to false.
@@ -90,15 +79,12 @@
 //! # }
 //! ```
 //!
-//!___
-//! <br>
-//!
 //! ### Tri-Fail
 //!
 //! The `->` operator returns the trailing expression in an error
 //! if the expression doesn't match the given term.
 //!
-//! ```
+//! ```rust
 //! # use tri_ton::tri;
 //! # fn dummy() -> Result<(), &'static str> {
 //! # let foo = Some(true);
@@ -112,15 +98,12 @@
 //! # }
 //! ```
 //!
-//! ___
-//! <br>
-//!
 //! ### Tri-Return
 //!
 //! The `#>` operator returns the trailing expression without an
 //! error wrapper. It can also be used as a break expression.
 //!
-//! ```
+//! ```rust
 //! # #[no_std]
 //! # use tri_ton::tri;
 //! # fn dummy() -> Result<(), &'static str> {
@@ -140,9 +123,6 @@
 //! # }
 //! ```
 //!
-//! ___
-//! <br>
-//!
 //! ### Tri-Until
 //!
 //! The `%>` operator repeatedly evaluates the leading expression
@@ -150,7 +130,7 @@
 //! does not match the given term, the tailing expression is
 //! evaluated.
 //!
-//!```
+//!```rust
 //! # use tri_ton::tri;
 //! # fn main() {
 //!     let mut foo: u8 = 0;
@@ -158,9 +138,6 @@
 //!     assert_eq!(foo, 10);
 //! # }
 //! ```
-//!
-//! ___
-//! <br>
 //!
 //! ### Tri-While
 //!
@@ -170,7 +147,7 @@
 //! time that it matches the given term, the trailing expression
 //! is evaluated with those values.
 //!
-//!```
+//!```rust
 //! # use tri_ton::tri;
 //! # fn main() {
 //! # let foo = |a: u8| -> Option<u8> { if a >= 10 { None } else { Some(a) } };

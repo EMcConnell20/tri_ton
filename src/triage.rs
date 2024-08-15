@@ -1,10 +1,8 @@
-/// ## Tri - Try Into ##
+/// ## Tri! - Try Into ##
 ///
 /// The **tri!** macro is a tool for handling results and options.
 /// Unlike the `?` operator, **tri!** allows you to easily specify
 /// what to do if unpacking fails.
-///
-/// ___
 ///
 ///     tri!(a => b $$ c);
 ///
@@ -13,8 +11,6 @@
 ///     c - Trailing Expression
 ///
 ///     $$ - Tri Operator
-///
-/// ___
 ///
 /// ### Tri-Fail `->`
 ///
@@ -28,8 +24,6 @@
 ///     if let Some(value) = item { value }
 ///     else { return Err("Item was None!"); }
 ///
-/// ___
-///
 /// ### Tri-Fall `<>`
 ///
 /// Evaluates and uses the trailing expression as a fallback if
@@ -42,8 +36,6 @@
 ///     if let Some(value) = item { value }
 ///     else { backup }
 ///
-/// ___
-///
 /// ### Tri-Return `#>`
 ///
 /// Similar to the `->` operator, but it doesn't wrap the return
@@ -55,8 +47,6 @@
 ///     // Expanded Form
 ///     if let Some(value) = item { value }
 ///     else { return core::result::Result::Err(()); }
-///
-/// ___
 ///
 /// ### Tri-Return `#> break`
 ///
@@ -72,8 +62,6 @@
 ///     if let Some(value) = item { value }
 ///     else { break 'a true; }
 ///
-/// ___
-///
 /// ### Tri-Until `%>`
 ///
 /// Performs the leading expression until its output matches the
@@ -87,8 +75,6 @@
 ///         if let Some(value) = item { break value; }
 ///         else { thing += 1; }
 ///     }
-///
-/// ___
 ///
 /// ### Tri-While `>>`
 ///
